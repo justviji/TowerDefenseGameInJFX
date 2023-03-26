@@ -9,6 +9,7 @@ import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 
 public class StoreController {
     public ImageView normalTowerCover = new ImageView(new Image("file:src/main/java/com/example/towerdefensegameinjfx/game/resources/assets/PNG/Default size/towerDefense_tile249.png"));
@@ -17,6 +18,7 @@ public class StoreController {
     public ImageView machineGunTower = new ImageView(new Image("file:src/main/java/com/example/towerdefensegameinjfx/game/resources/assets/PNG/Default size/towerDefense_tile250.png"));
     public ImageView sniperTowerCover = new ImageView(new Image("file:src/main/java/com/example/towerdefensegameinjfx/game/resources/assets/PNG/Default size/towerDefense_tile206.png"));
     public ImageView sniperTower = new ImageView(new Image("file:src/main/java/com/example/towerdefensegameinjfx/game/resources/assets/PNG/Default size/towerDefense_tile206.png"));
+    public VBox towers = new VBox(normalTowerCover,normalTower,machineGunTowerCover,machineGunTower,sniperTowerCover,sniperTower);
 
 
 //    private FXMLLoader fxmlLoader;

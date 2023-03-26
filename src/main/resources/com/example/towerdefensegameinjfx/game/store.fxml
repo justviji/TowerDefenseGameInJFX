@@ -1,40 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
+
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
+
 
 <AnchorPane prefHeight="480.0" prefWidth="128.0" xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.example.towerdefensegameinjfx.game.store.StoreController">
-        <Label alignment="CENTER" prefHeight="28.0" prefWidth="64.0" text="\20NP"
+        <Label alignment="CENTER" prefHeight="28.0" prefWidth="64.0" text="20NP"
                textFill="WHITE"/>
-        <Label alignment="CENTER" prefHeight="28.0" prefWidth="64.0" text="\50NP"
+        <Label alignment="CENTER" prefHeight="28.0" prefWidth="64.0" text="50NP"
                textFill="WHITE"/>
-        <Label alignment="CENTER" prefHeight="28.0" prefWidth="64.0" text="\70NP"
+        <Label alignment="CENTER" prefHeight="28.0" prefWidth="64.0" text="70NP"
                textFill="WHITE"/>
-        <ImageView fx:id="normalTowerCover" fitHeight="64.0" fitWidth="64.0" layoutY="64.0" pickOnBounds="true"
-                   preserveRatio="true">
+        <VBox fx:id="towers"/>
 
-        </ImageView>
-        <ImageView fx:id="normalTower" fitHeight="64.0" fitWidth="64.0" layoutY="64.0" onMouseEntered="#onMouseEntered"
-                   pickOnBounds="true" style="-fx-background-color: red;">
-
-        </ImageView>
-        <ImageView fx:id="machineGunTowerCover" fitHeight="64.0" fitWidth="64.0" layoutY="192.0" pickOnBounds="true"
-                   preserveRatio="true">
-        </ImageView>
-        <ImageView fx:id="machineGunTower" fitHeight="64.0" fitWidth="64.0" layoutY="192.0"
-                   onMouseEntered="#onMouseEntered" pickOnBounds="true" preserveRatio="true">
-        </ImageView>
-        <ImageView fx:id="sniperTowerCover" fitHeight="64.0" fitWidth="64.0" layoutY="331.0"
-                   onMouseEntered="#onMouseEntered" pickOnBounds="true" preserveRatio="true">
-
-        </ImageView>
-        <ImageView fx:id="sniperTower" fitHeight="64.0" fitWidth="64.0" layoutY="331.0" onMouseEntered="#onMouseEntered"
-                   pickOnBounds="true" preserveRatio="true">
-        </ImageView>
 </AnchorPane>

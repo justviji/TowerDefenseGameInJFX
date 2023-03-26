@@ -51,7 +51,7 @@ public final class GameField {
 
     public void renderMap() {
         try {
-            gc.drawImage(new Image("/resources/map/map1.png"), 0, 0);
+            gc.drawImage(new Image("file:com/example/towerdefensegameinjfx/game/resources/map/map1.png"), 0, 0);
             hills.forEach(hill -> gc.drawImage(hill.getImage(), hill.getSceneX(), hill.getSceneY()));
         } catch (Exception e) {
             System.out.println("Error Loading Map");
