@@ -1,0 +1,36 @@
+package com.example.towerdefensegameinjfx.game.entity.tower;
+
+import com.example.towerdefensegameinjfx.game.Config;
+import com.example.towerdefensegameinjfx.game.entity.bullet.Bullet;
+import javafx.animation.Interpolator;
+import javafx.animation.RotateTransition;
+import javafx.scene.image.ImageView;
+import javafx.util.Duration;
+
+public class MachineGunTower extends Tower {
+
+    public MachineGunTower() {
+        super(Config.MACHINE_GUN_TOWER_PRICE, Config.MACHINE_GUN_TOWER_DAMAGE, Config.MACHINE_GUN_TOWER_DELAY_TIME, Config.MACHINE_GUN_TOWER_RANGE);
+        try {
+            this.image = Config.MACHINE_GUN_TOWER_IMG;
+            this.imageView = new ImageView(image);
+            this.transition = new RotateTransition(Duration.millis(100), imageView);
+            this.transition.setInterpolator(Interpolator.LINEAR);
+        } catch (Exception e) {
+            System.out.println("Error Loading Machine Tower Image:" + e.getMessage());
+        }
+    }
+
+    @Override
+    public Bullet getBullet() {
+        return new Bullet(Config.MACHINE_GUN_BULLET_IMG, this.nextAngle);
+    }
+
+
+    @Override
+    public void upgrade() {
+        this.setDamage(this.getDamage() + 20);
+        this.setRange(this.getRange() + 20);
+        this.setPrice(this.getPrice() + 30);
+    }
+}
