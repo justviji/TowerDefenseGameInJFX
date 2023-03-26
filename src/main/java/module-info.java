@@ -3,6 +3,6 @@ module com.example.towerdefensegameinjfx {
     requires javafx.fxml;
 
 
-    opens com.example.towerdefensegameinjfx to javafx.fxml;
+    opens com.example.towerdefensegameinjfx.game to javafx.fxml;
     exports com.example.towerdefensegameinjfx.game;
 }
