@@ -6,16 +6,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.image.Image;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.scene.control.Button;
-
 
 import java.io.IOException;
-import java.util.Objects;
 
-//graphics not done by me
+//graphics not done by me btw check kenney_topdowntankredux
 public class Main extends Application {
     private FXMLLoader fxmlLoader;
     private AnchorPane mainPane;
