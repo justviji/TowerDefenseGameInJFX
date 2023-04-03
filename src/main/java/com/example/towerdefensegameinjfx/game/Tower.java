@@ -1,10 +1,10 @@
-package com.example.towerdefensegameinjfx.game.entity.tower;
+package com.example.towerdefensegameinjfx.game;
 
 import com.example.towerdefensegameinjfx.game.Config;
-import com.example.towerdefensegameinjfx.game.entity.GameEntity;
-import com.example.towerdefensegameinjfx.game.entity.Hill;
-import com.example.towerdefensegameinjfx.game.entity.bullet.Bullet;
-import com.example.towerdefensegameinjfx.game.entity.enemy.Enemy;
+import com.example.towerdefensegameinjfx.game.GameEntity;
+import com.example.towerdefensegameinjfx.game.Hill;
+import com.example.towerdefensegameinjfx.game.Bullet;
+import com.example.towerdefensegameinjfx.game.Enemy;
 import javafx.animation.RotateTransition;
 import javafx.scene.image.ImageView;
 

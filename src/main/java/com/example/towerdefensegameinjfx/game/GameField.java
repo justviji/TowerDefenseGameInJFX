@@ -1,18 +1,11 @@
 package com.example.towerdefensegameinjfx.game;
 
-import com.example.towerdefensegameinjfx.game.store.Store;
-import com.example.towerdefensegameinjfx.game.entity.Hill;
-import com.example.towerdefensegameinjfx.game.entity.bullet.Bullet;
-import com.example.towerdefensegameinjfx.game.entity.enemy.*;
-import com.example.towerdefensegameinjfx.game.entity.tower.Tower;
-import com.example.towerdefensegameinjfx.game.store.Store;
 import javafx.animation.*;
 import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
@@ -49,13 +42,24 @@ public final class GameField {
 
 
 
-    public void renderMap() {
+    public void renderMap()  {
         try {
-            gc.drawImage(new Image("file:com/example/towerdefensegameinjfx/game/resources/map/map1.png"), 0, 0);
+            //gc.fillRect(0,0,100,100);
+            Image i = new Image(getClass().getResourceAsStream("map/map1.png"));
+            gc.drawImage(i, 0, 0);
             hills.forEach(hill -> gc.drawImage(hill.getImage(), hill.getSceneX(), hill.getSceneY()));
         } catch (Exception e) {
-            System.out.println("Error Loading Map");
+            //System.out.println("Error Loading Map");
+            e.printStackTrace();
         }
+    }
+
+    public Group getRoot() {
+        return root;
+    }
+
+    public void setRoot(Group root) {
+        this.root = root;
     }
 
     public void play() {
@@ -147,6 +151,11 @@ public final class GameField {
                 }
             }
         };
+        Button openShop = new Button("open shop");
+        openShop.setOnAction(a->{
+            timer.stop();
+            //TODO
+        });
         Button button = new Button("Back to Menu");
         button.setOnAction(e -> {
             stop();
@@ -155,6 +164,10 @@ public final class GameField {
         button.setPrefSize(150, 40);
         button.setLayoutX(Config.SCREEN_WIDTH - button.getPrefWidth() - 5);
         button.setLayoutY(Config.SCREEN_HEIGHT - button.getPrefHeight() - 5);
+        button.setPrefSize(150, 40);
+        button.setLayoutX(Config.SCREEN_WIDTH - button.getPrefWidth() - 5);
+        button.setLayoutY(Config.SCREEN_HEIGHT- 2*button.getPrefHeight() - 5);
+        root.getChildren().add(openShop);
         root.getChildren().add(button);
         timer.start();
     }
@@ -200,7 +213,6 @@ public final class GameField {
 
             if (enemy.isDead() && enemies.contains(enemy)) {
                 remove(enemy);
-                //update money
                 GameStage.money += enemy.getReward();
             }
         });

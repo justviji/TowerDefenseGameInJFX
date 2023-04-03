@@ -1,7 +1,5 @@
-package com.example.towerdefensegameinjfx.game.entity.enemy;
+package com.example.towerdefensegameinjfx.game;
 
-import com.example.towerdefensegameinjfx.game.Config;
-import com.example.towerdefensegameinjfx.game.GameField;
 import javafx.animation.Interpolator;
 import javafx.animation.SequentialTransition;
 import javafx.scene.image.ImageView;

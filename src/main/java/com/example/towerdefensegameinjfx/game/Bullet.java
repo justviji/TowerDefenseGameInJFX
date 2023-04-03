@@ -1,6 +1,6 @@
-package com.example.towerdefensegameinjfx.game.entity.bullet;
+package com.example.towerdefensegameinjfx.game;
 
-import com.example.towerdefensegameinjfx.game.entity.GameEntity;
+import com.example.towerdefensegameinjfx.game.GameEntity;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 

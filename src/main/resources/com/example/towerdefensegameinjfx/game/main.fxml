@@ -1,28 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.effect.*?>
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import java.util.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="960.0" prefWidth="1408.0" xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.towerdefensegameinjfx.game.MainMenuController" ><!--background="@/com/example/towerdefensegameinjfx/game/resources/img.png"-->
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<AnchorPane fx:id="asdf" prefHeight="960.0" prefWidth="1408.0" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.towerdefensegameinjfx.game.MainMenuController">
     <AnchorPane fx:id="menu" prefHeight="960.0" prefWidth="1280.0">
-        <VBox layoutX="104.0" layoutY="450.0" prefHeight="450.0" prefWidth="339.0" spacing="30.0">
-            <Button fx:id="playBtn" text="PLAY" textFill="WHITE">
-                <font>
-                    <Font name="Agency FB Bold" size="47.0"/>
-                </font>
-            </Button>
-            <Button fx:id="exitBtn" text="EXIT">
-                <font>
-                    <Font name="Agency FB Bold" size="47.0"/>
-                </font>
-            </Button>
-        </VBox>
+            <children>
+                <VBox layoutX="104.0" layoutY="450.0" prefHeight="450.0" prefWidth="339.0" spacing="30.0">
+                    <children>
+                        <Button fx:id="playBtn" mnemonicParsing="false" prefHeight="90.0" prefWidth="545.0"
+                                styleClass="btn" text="PLAY" textFill="WHITE">
+                            <font>
+                                <Font name="Agency FB Bold" size="47.0"/>
+                            </font>
+                        </Button>
+                        <Button fx:id="exitBtn" mnemonicParsing="false" prefHeight="90.0" prefWidth="538.0"
+                                styleClass="btn" text="EXIT" textFill="WHITE">
+                            <font>
+                                <Font name="Agency FB Bold" size="47.0"/>
+                            </font>
+                        </Button>
+                    </children>
+                </VBox>
+            </children>
+            <AnchorPane id="store" fx:id="store" layoutX="1280.0" layoutY="-6.0" prefHeight="480.0" prefWidth="128.0" visible="true"/>
     </AnchorPane>
 </AnchorPane>

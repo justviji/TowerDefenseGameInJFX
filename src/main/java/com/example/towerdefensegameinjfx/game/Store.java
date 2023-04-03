@@ -1,20 +1,8 @@
-package com.example.towerdefensegameinjfx.game.store;
+package com.example.towerdefensegameinjfx.game;
 
-import com.example.towerdefensegameinjfx.game.Config;
-import com.example.towerdefensegameinjfx.game.GameStage;
-import com.example.towerdefensegameinjfx.game.Main;
-import com.example.towerdefensegameinjfx.game.MainMenuController;
-import com.example.towerdefensegameinjfx.game.entity.Hill;
-import com.example.towerdefensegameinjfx.game.entity.tower.MachineGunTower;
-import com.example.towerdefensegameinjfx.game.entity.tower.NormalTower;
-import com.example.towerdefensegameinjfx.game.entity.tower.SniperTower;
-import com.example.towerdefensegameinjfx.game.entity.tower.Tower;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Cursor;
-import javafx.scene.Group;
-import javafx.scene.ImageCursor;
-import javafx.scene.Parent;
+import javafx.scene.*;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -46,6 +34,14 @@ public class Store {
         this.mainPane = mainPane;
         this.mainMenuController = mainMenuController;
         this.radius = new HashMap<>();
+    }
+
+    public AnchorPane getMainPane() {
+        return mainPane;
+    }
+
+    public void setMainPane(AnchorPane mainPane) {
+        this.mainPane = mainPane;
     }
 
     public void init() throws IOException {
@@ -283,5 +279,9 @@ public class Store {
             }
         });
 
+    }
+
+    public Node getRoot() {
+        return this.getRoot();
     }
 }

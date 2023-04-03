@@ -1,6 +1,5 @@
 package com.example.towerdefensegameinjfx.game;
 
-import com.example.towerdefensegameinjfx.game.store.Store;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
@@ -67,13 +66,18 @@ public class Main extends Application {
 
     private void startGame() throws IOException {
         Group root = new Group();
-        mainPane.getChildren().add(root);
+        mainPane.getChildren().setAll(root);
         //Create canvas
-        Canvas canvas = new Canvas(Config.SCREEN_WIDTH, Config.SCREEN_HEIGHT);
+        Canvas canvas = new Canvas();
+        canvas.setHeight(Config.SCREEN_HEIGHT);
+        canvas.setWidth(Config.SCREEN_WIDTH);
+        //Canvas canvas = new Canvas(Config.SCREEN_WIDTH, Config.SCREEN_HEIGHT);
 
-        root.getChildren().addAll(canvas);
+        root.getChildren().add(canvas);
+
 
         Store store = new Store(mainPane, fxmlLoader.getController());
+
         new GameStage(root, canvas, store).start();
     }
 

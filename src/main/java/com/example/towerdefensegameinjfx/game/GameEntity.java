@@ -1,4 +1,4 @@
-package com.example.towerdefensegameinjfx.game.entity;
+package com.example.towerdefensegameinjfx.game;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;

@@ -1,7 +1,5 @@
-package com.example.towerdefensegameinjfx.game.entity.tower;
+package com.example.towerdefensegameinjfx.game;
 
-import com.example.towerdefensegameinjfx.game.Config;
-import com.example.towerdefensegameinjfx.game.entity.bullet.Bullet;
 import javafx.animation.Interpolator;
 import javafx.animation.RotateTransition;
 import javafx.scene.image.ImageView;

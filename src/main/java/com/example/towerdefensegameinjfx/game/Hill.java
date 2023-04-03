@@ -1,11 +1,8 @@
-package com.example.towerdefensegameinjfx.game.entity;
+package com.example.towerdefensegameinjfx.game;
 
-import com.example.towerdefensegameinjfx.game.Config;
-import com.example.towerdefensegameinjfx.game.GameStage;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.ImageView;
 
-public class Hill extends com.example.towerdefensegameinjfx.game.entity.GameEntity {
+public class Hill extends GameEntity {
     // x,y coordinate relative to 20x15 tile screen
     private int x;
     private int y;

@@ -1,7 +1,7 @@
-package com.example.towerdefensegameinjfx.game.entity.enemy;
+package com.example.towerdefensegameinjfx.game;
 
 import com.example.towerdefensegameinjfx.game.Config;
-import com.example.towerdefensegameinjfx.game.entity.GameEntity;
+import com.example.towerdefensegameinjfx.game.GameEntity;
 import javafx.animation.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;

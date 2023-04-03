@@ -1,6 +1,5 @@
 package com.example.towerdefensegameinjfx.game;
 
-import com.example.towerdefensegameinjfx.game.store.*;
 import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 
@@ -12,9 +11,9 @@ public class GameStage {
 
     private final GameField gameField;
     private final Group root;
-    private final com.example.towerdefensegameinjfx.game.store.Store store;
+    private final Store store;
 
-    public GameStage(Group root, Canvas canvas, com.example.towerdefensegameinjfx.game.store.Store store) {
+    public GameStage(Group root, Canvas canvas, Store store) {
         gameField = new GameField(root, canvas, store);
         this.root = root;
         this.store = store;
@@ -30,5 +29,6 @@ public class GameStage {
         renderGameField();
         store.init();
         gameField.play();
+
     }
 }
