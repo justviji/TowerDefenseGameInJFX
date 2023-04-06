@@ -2,7 +2,10 @@ package com.example.towerdefensegameinjfx.game;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.*;
+import javafx.scene.Group;
+import javafx.scene.ImageCursor;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -30,7 +33,7 @@ public class Store {
     public static Store storeStatic;
     boolean wasMouseReleased =true;
 
-    private final HashMap<ImageView, Integer> radius = new HashMap<>(); //nutzung einer hash map fur geschwindigkeit beim vergleichen von keyed items
+    private final HashMap<ImageView, Integer> radius = new HashMap<>(); // hash map for fast comparisons
 
     public Store(AnchorPane mainPane, MainMenuController mainMenuController) {
         this.mainPane = mainPane;
@@ -83,19 +86,13 @@ public class Store {
     }
 
     public void handleDragDropEvent(ImageView source, Group root, List<Hill> hills, List<Tower> towers) {
-        System.out.println("handle drag drop event");
+        //System.out.println("handle drag drop event");
         Circle tempCircle = new Circle(-1000, -1000, radius.get(source));
         tempCircle.setStroke(Color.FORESTGREEN);
         tempCircle.setFill(Color.rgb(0, 0, 0, 0.05));
-        if (wasMouseReleased)
-            root.getChildren().add(tempCircle);
-        else if(!root.getChildren().remove(tempCircle)){
-            root.getChildren().add(tempCircle);
-        }
-        //System.out.println(Arrays.toString(Thread.currentThread().getStackTrace()));
+        root.getChildren().add(tempCircle);
         EventHandler<MouseEvent> mouseDragged = event -> {
-            wasMouseReleased =false;
-//          ImageView source = ((ImageView) (event.getSource()));
+            source.setVisible(false);
 
             source.setTranslateX(event.getSceneX() - 32 - (mainPane.getWidth() - mainMenuController.getStore().getWidth()));
             source.setTranslateY(event.getSceneY() - 32 - source.getLayoutY());
@@ -105,9 +102,16 @@ public class Store {
 
             AtomicBoolean hovering = new AtomicBoolean(false);
             // if mouse hovering on a hill then change cursor type
+            if (normalTower.equals(source)) {
+                source.setCursor(new ImageCursor(StoreController.normalTower.getImage()));
+            } else if (machineGunTower.equals(source)) {
+                source.setCursor(new ImageCursor(StoreController.machineGunTower.getImage()));
+            } else if (sniperTower.equals(source)) {
+                source.setCursor(new ImageCursor(StoreController.sniperTower.getImage()));
+            }
             hills.forEach(hill -> {
                 if (hill.isUsable(event.getSceneX(), event.getSceneY())) {
-                    source.setCursor(Cursor.CROSSHAIR);
+                    //source.setCursor(Cursor.CROSSHAIR);
                     hovering.set(true);
                     if (normalTower.equals(source)) {
                         if (GameStage.money < Config.NORMAL_TOWER_PRICE)
@@ -121,22 +125,17 @@ public class Store {
                     }
                 }
             });
-            if (hovering.get()){
-                source.setCursor(Cursor.OPEN_HAND);
-            }
-            if (!hovering.get()) {
-                source.setCursor(Cursor.CLOSED_HAND);
-            }
+
+            root.getChildren().remove(tempCircle);
         };
         // will definetly continue the game so well if I add a new tower --->>> fix some things here (else{bugs=true})
         EventHandler<MouseEvent> mouseReleased = event -> {
-            wasMouseReleased =true;
+            source.setVisible(true);
 //            resetPosition();
             source.setTranslateX(0);
             source.setTranslateY(0);
 
             root.getChildren().remove(tempCircle);
-            normalTower.setCursor(Cursor.CLOSED_HAND);
             hills.forEach(hill -> {
                 if (hill.isUsable(event.getSceneX(), event.getSceneY())) {
                     Tower tower;

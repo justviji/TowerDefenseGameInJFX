@@ -3,7 +3,7 @@ package com.example.towerdefensegameinjfx.game;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-import java.net.URISyntaxException;
+import java.util.Objects;
 
 public final class Config {
 
@@ -21,13 +21,20 @@ public final class Config {
 
     public static final int SCREEN_HEIGHT = TILE_SIZE * TILE_VERTICAL;
 
+    public static final Image background = new Image(Objects.requireNonNull(Config.class.getResourceAsStream("background.png")));
 
-    public static final Image NORMAL_BULLET_IMG = new Image(Config.class.getResourceAsStream("assets/PNG/Default_size/towerDefense_tile257.png"));
-    public static final Image SNIPER_BULLET_IMG = new Image(Config.class.getResourceAsStream("assets/PNG/Default_size/towerDefense_tile252.png"));
-    public static final Image MACHINE_GUN_BULLET_IMG = new Image(Config.class.getResourceAsStream("assets/PNG/Default_size/towerDefense_tile295.png"));
+
+    public static final  double difficultyMultiplyerNormal = 1;
+    public static final  double difficultyMultiplyerHard = 0.75;
+    public static final  double difficultyMultiplyerInsane = 0.5;
+    public static final  double difficultyMultiplyerImpossible = 0.25;
+    public static double chosenDifficultyMultiplyer = difficultyMultiplyerNormal;
+    public static final Image NORMAL_BULLET_IMG = new Image(Objects.requireNonNull(Config.class.getResourceAsStream("assets/PNG/Default_size/towerDefense_tile257.png")));
+    public static final Image SNIPER_BULLET_IMG = new Image(Objects.requireNonNull(Config.class.getResourceAsStream("assets/PNG/Default_size/towerDefense_tile252.png")));
+    public static final Image MACHINE_GUN_BULLET_IMG = new Image(Objects.requireNonNull(Config.class.getResourceAsStream("assets/PNG/Default_size/towerDefense_tile295.png")));
 
     // normal tower
-    public static final Image NORMAL_TOWER_IMG = new Image(Config.class.getResourceAsStream("assets/PNG/Default_size/towerDefense_tile249.png"));
+    public static final Image NORMAL_TOWER_IMG = new Image(Objects.requireNonNull(Config.class.getResourceAsStream("assets/PNG/Default_size/towerDefense_tile249.png")));
     public static final int NORMAL_TOWER_PRICE = 20;
     public static final int NORMAL_TOWER_DAMAGE = 150;
     public static final int NORMAL_TOWER_DELAY_TIME = (int) SECOND;

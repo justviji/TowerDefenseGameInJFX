@@ -17,8 +17,8 @@ public class GameStage {
         gameField = new GameField(root, canvas, store);
         this.root = root;
         this.store = store;
-        GameStage.money = 1000;
-        GameStage.health = 10;
+        GameStage.money = (int)((double)1000*Config.chosenDifficultyMultiplyer);
+        GameStage.health = (int)((double)10*Config.chosenDifficultyMultiplyer);
     }
 
     private void renderGameField() {

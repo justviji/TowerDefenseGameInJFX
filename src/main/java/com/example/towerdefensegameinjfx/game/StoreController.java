@@ -8,11 +8,11 @@ import javafx.scene.layout.VBox;
 
 public class StoreController {
     public static ImageView normalTowerCover = new ImageView(String.valueOf(Config.class.getResource("assets/PNG/Default_size/towerDefense_tile249.png")));
-    public ImageView normalTower = new ImageView(String.valueOf(Config.class.getResource("assets/PNG/Default_size/towerDefense_tile249.png")));
+    public static ImageView normalTower = new ImageView(String.valueOf(Config.class.getResource("assets/PNG/Default_size/towerDefense_tile249.png")));
     public static ImageView machineGunTowerCover = new ImageView(String.valueOf(Config.class.getResource("assets/PNG/Default_size/towerDefense_tile250.png")));
-    public ImageView machineGunTower = new ImageView(String.valueOf(Config.class.getResource("assets/PNG/Default_size/towerDefense_tile250.png")));
+    public static ImageView machineGunTower = new ImageView(String.valueOf(Config.class.getResource("assets/PNG/Default_size/towerDefense_tile250.png")));
     public static ImageView sniperTowerCover = new ImageView(String.valueOf(Config.class.getResource("assets/PNG/Default_size/towerDefense_tile206.png")));
-    public ImageView sniperTower = new ImageView(String.valueOf(Config.class.getResource("assets/PNG/Default_size/towerDefense_tile206.png")));
+    public static ImageView sniperTower = new ImageView(String.valueOf(Config.class.getResource("assets/PNG/Default_size/towerDefense_tile206.png")));
     public VBox towers = new VBox(normalTowerCover,normalTower,machineGunTowerCover,machineGunTower,sniperTowerCover,sniperTower);
     public HBox standardTowerHbox;
     public HBox mgTowerHbox;

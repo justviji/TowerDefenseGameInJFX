@@ -13,15 +13,14 @@ import java.io.IOException;
 
 //graphics not done by me btw check kenney_topdowntankredux
 public class Main extends Application {
-    private FXMLLoader fxmlLoader;
-    private AnchorPane mainPane;
-    private Stage primaryStage;
+    private static FXMLLoader fxmlLoader;
+    private static AnchorPane mainPane;
+    public static Stage primaryStage;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        this.primaryStage = primaryStage;
-        fxmlLoader = new FXMLLoader(Main.class.getResource("main.fxml"));
-        mainPane = fxmlLoader.load();
+        Main.primaryStage = primaryStage;
+
 
 
         initMainMenu();
@@ -39,7 +38,7 @@ public class Main extends Application {
         primaryStage.sizeToScene();
         primaryStage.show();
     }
-    private void closeGame() {
+    private static void closeGame() {
         primaryStage.close();
     }
 
@@ -47,11 +46,14 @@ public class Main extends Application {
         launch(args);
     }
 
-    private void initMainMenu() {
+    public static void initMainMenu() throws IOException {
+        fxmlLoader = new FXMLLoader(Main.class.getResource("main.fxml"));
+        mainPane = fxmlLoader.load();
         // get main menu controller
         MainMenuController mainMenuController = fxmlLoader.getController();
         Button playBtn = mainMenuController.getPlayBtn();
         Button exitBtn = mainMenuController.getExitBtn();
+
 
 
         playBtn.setOnAction(event -> {
@@ -64,7 +66,8 @@ public class Main extends Application {
         exitBtn.setOnAction(event -> closeGame());
     }
 
-    private void startGame() throws IOException {
+    private static void startGame() throws IOException {
+
         Group root = new Group();
         mainPane.getChildren().setAll(root);
         //Create canvas

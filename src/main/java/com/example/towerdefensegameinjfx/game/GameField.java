@@ -15,6 +15,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -155,15 +156,15 @@ public final class GameField {
                 }
             }
         };
-        Button openShop = new Button("open shop");
-        openShop.setOnAction(a->{
-            timer.stop();
-            //TODO
-        });
         Button button = new Button("Back to Menu");
         button.setOnAction(e -> {
             stop();
             timer.stop();
+            try {
+                Main.initMainMenu();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
         });
         button.setPrefSize(150, 40);
         button.setLayoutX(Config.SCREEN_WIDTH - button.getPrefWidth() - 5);
@@ -171,7 +172,6 @@ public final class GameField {
         button.setPrefSize(150, 40);
         button.setLayoutX(Config.SCREEN_WIDTH - button.getPrefWidth() - 5);
         button.setLayoutY(Config.SCREEN_HEIGHT- 2*button.getPrefHeight() - 5);
-        root.getChildren().add(openShop);
         root.getChildren().add(button);
         timer.start();
     }
