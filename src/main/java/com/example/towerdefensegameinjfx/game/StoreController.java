@@ -30,9 +30,15 @@ public class StoreController {
         standardTowerHbox.getChildren().add(normalTowerCover);
         mgTowerHbox.getChildren().add(machineGunTowerCover);
         sniperTowerHbox.getChildren().add(sniperTowerCover);
-        normalTowerCover.setOnMouseEntered(normalTowerEvent->{
-            Store.storeStatic.handleDragDropEvent((ImageView) normalTowerEvent.getSource(),GameField.getRoot(),GameField.staticHills,GameField.staticTowers);
-        });
+        normalTowerCover.setOnMouseEntered(normalTowerEvent->
+                Store.storeStatic.handleDragDropEvent((ImageView) normalTowerEvent.getSource(),GameField.getRoot(),GameField.staticHills,GameField.staticTowers)
+        );
+        machineGunTowerCover.setOnMouseEntered(mgTowerEvent->
+                Store.storeStatic.handleDragDropEvent((ImageView) mgTowerEvent.getSource(),GameField.getRoot(),GameField.staticHills,GameField.staticTowers)
+        );
+        sniperTowerCover.setOnMouseEntered(sniperTowerEvent->
+                Store.storeStatic.handleDragDropEvent((ImageView) sniperTowerEvent.getSource(),GameField.getRoot(),GameField.staticHills,GameField.staticTowers)
+        );
 
     }
 

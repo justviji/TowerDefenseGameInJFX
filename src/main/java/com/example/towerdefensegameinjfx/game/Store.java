@@ -28,6 +28,7 @@ public class Store {
     private ImageView sniperTower = StoreController.sniperTowerCover;
     private boolean isChosen = false;
     public static Store storeStatic;
+    boolean wasMouseReleased =true;
 
     private final HashMap<ImageView, Integer> radius = new HashMap<>(); //nutzung einer hash map fur geschwindigkeit beim vergleichen von keyed items
 
@@ -86,10 +87,16 @@ public class Store {
         Circle tempCircle = new Circle(-1000, -1000, radius.get(source));
         tempCircle.setStroke(Color.FORESTGREEN);
         tempCircle.setFill(Color.rgb(0, 0, 0, 0.05));
-        root.getChildren().add(tempCircle);
-
+        if (wasMouseReleased)
+            root.getChildren().add(tempCircle);
+        else if(!root.getChildren().remove(tempCircle)){
+            root.getChildren().add(tempCircle);
+        }
+        //System.out.println(Arrays.toString(Thread.currentThread().getStackTrace()));
         EventHandler<MouseEvent> mouseDragged = event -> {
+            wasMouseReleased =false;
 //          ImageView source = ((ImageView) (event.getSource()));
+
             source.setTranslateX(event.getSceneX() - 32 - (mainPane.getWidth() - mainMenuController.getStore().getWidth()));
             source.setTranslateY(event.getSceneY() - 32 - source.getLayoutY());
 
@@ -123,6 +130,7 @@ public class Store {
         };
         // will definetly continue the game so well if I add a new tower --->>> fix some things here (else{bugs=true})
         EventHandler<MouseEvent> mouseReleased = event -> {
+            wasMouseReleased =true;
 //            resetPosition();
             source.setTranslateX(0);
             source.setTranslateY(0);
@@ -213,7 +221,7 @@ public class Store {
                 towerDamage.setFill(Color.RED);
                 towerDamage.setStroke(Color.BLACK);
 
-                // Set money text beside the button, damage text on top
+                // Set money text next to the button, damage text on top
                 upgradeMoney.setTranslateX(upgrade.getTranslateX());
                 upgradeMoney.setTranslateY(upgrade.getTranslateY());
                 towerDamage.setTranslateX(upgrade.getTranslateX());
@@ -244,7 +252,7 @@ public class Store {
 
 
                         // Add star for each upgrade
-                        ImageView star = new ImageView("resources/assets/star.png");
+                        ImageView star = new ImageView(String.valueOf(this.getClass().getResource("assets/star.png")));
                         t.stars.add(star);
                         star.setX(t.getX() - 30 + t.getLevel() * 15);
                         star.setY(t.getY() + 15);
@@ -258,7 +266,7 @@ public class Store {
                     }
                 });
 
-                //When user click on sell button
+                //When user clicks on sell button
                 sell.setOnMouseClicked(eventSell -> {
                     root.getChildren().removeAll(t.getImageView(), circle, upgrade, sell, cancel);
                     root.getChildren().removeAll(upgradeMoney, sellMoney, towerDamage);

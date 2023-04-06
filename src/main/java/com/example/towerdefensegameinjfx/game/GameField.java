@@ -67,7 +67,7 @@ public final class GameField {
     }
 
     public void play() {
-        store.handleMouseEvent(root, hills, towers);
+        //store.handleMouseEvent(root, hills, towers);
         createText();
         AnimationTimer timer = new AnimationTimer() {
             // destination coordinate
