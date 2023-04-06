@@ -214,7 +214,7 @@ public class Store {
                 sellMoney.setFill(Color.YELLOW);
                 sellMoney.setStroke(Color.BLACK);
 
-                // Text show how much damage yours tower has
+                // Text show how much damage your tower has
                 Text towerDamage = new Text(35, 0, "Damage: " + t.getDamage());
                 towerDamage.setFont(Font.font("Helvetica", FontWeight.BOLD, 14));
                 towerDamage.setFill(Color.RED);
