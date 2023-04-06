@@ -2,18 +2,21 @@ package com.example.towerdefensegameinjfx.game;
 
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class StoreController {
-    public ImageView normalTowerCover = new ImageView(new Image("file:src/main/java/com/example/towerdefensegameinjfx/game/resources/assets/PNG/Default size/towerDefense_tile249.png"));
-    public ImageView normalTower = new ImageView(new Image("file:src/main/java/com/example/towerdefensegameinjfx/game/resources/assets/PNG/Default size/towerDefense_tile249.png"));
-    public ImageView machineGunTowerCover = new ImageView(new Image("file:src/main/java/com/example/towerdefensegameinjfx/game/resources/assets/PNG/Default size/towerDefense_tile250.png"));
-    public ImageView machineGunTower = new ImageView(new Image("file:src/main/java/com/example/towerdefensegameinjfx/game/resources/assets/PNG/Default size/towerDefense_tile250.png"));
-    public ImageView sniperTowerCover = new ImageView(new Image("file:src/main/java/com/example/towerdefensegameinjfx/game/resources/assets/PNG/Default size/towerDefense_tile206.png"));
-    public ImageView sniperTower = new ImageView(new Image("file:src/main/java/com/example/towerdefensegameinjfx/game/resources/assets/PNG/Default size/towerDefense_tile206.png"));
+    public static ImageView normalTowerCover = new ImageView(String.valueOf(Config.class.getResource("assets/PNG/Default_size/towerDefense_tile249.png")));
+    public ImageView normalTower = new ImageView(String.valueOf(Config.class.getResource("assets/PNG/Default_size/towerDefense_tile249.png")));
+    public static ImageView machineGunTowerCover = new ImageView(String.valueOf(Config.class.getResource("assets/PNG/Default_size/towerDefense_tile250.png")));
+    public ImageView machineGunTower = new ImageView(String.valueOf(Config.class.getResource("assets/PNG/Default_size/towerDefense_tile250.png")));
+    public static ImageView sniperTowerCover = new ImageView(String.valueOf(Config.class.getResource("assets/PNG/Default_size/towerDefense_tile206.png")));
+    public ImageView sniperTower = new ImageView(String.valueOf(Config.class.getResource("assets/PNG/Default_size/towerDefense_tile206.png")));
     public VBox towers = new VBox(normalTowerCover,normalTower,machineGunTowerCover,machineGunTower,sniperTowerCover,sniperTower);
+    public HBox standardTowerHbox;
+    public HBox mgTowerHbox;
+    public HBox sniperTowerHbox;
 
 
 //    private FXMLLoader fxmlLoader;
@@ -22,6 +25,16 @@ public class StoreController {
 //    Store(AnchorPane storePane) {
 //        this.storePane = storePane;
 //    }
+    @FXML
+    void initialize(){
+        standardTowerHbox.getChildren().add(normalTowerCover);
+        mgTowerHbox.getChildren().add(machineGunTowerCover);
+        sniperTowerHbox.getChildren().add(sniperTowerCover);
+        normalTowerCover.setOnMouseEntered(normalTowerEvent->{
+            Store.storeStatic.handleDragDropEvent((ImageView) normalTowerEvent.getSource(),GameField.getRoot(),GameField.staticHills,GameField.staticTowers);
+        });
+
+    }
 
 
 

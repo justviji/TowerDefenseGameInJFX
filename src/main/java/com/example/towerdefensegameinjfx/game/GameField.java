@@ -17,18 +17,21 @@ import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public final class GameField {
 
-    private Group root;
+    private static Group root;
     private GraphicsContext gc;
     private Store store;
 
     private Text money, health;
 
     private final List<Hill> hills = new ArrayList<>();
+    public static List<Hill> staticHills;
     private List<Enemy> enemies;
     private List<Tower> towers;
+    public static List<Tower> staticTowers;
 
     public GameField(Group root, Canvas canvas, Store store) {
         this.root = root;
@@ -36,6 +39,7 @@ public final class GameField {
         this.gc = canvas.getGraphicsContext2D();
         enemies = new ArrayList<>();
         towers = new ArrayList<>();
+        staticTowers = towers;
         // init hills
         initHills();
     }
@@ -45,7 +49,7 @@ public final class GameField {
     public void renderMap()  {
         try {
             //gc.fillRect(0,0,100,100);
-            Image i = new Image(getClass().getResourceAsStream("map/map1.png"));
+            Image i = new Image(Objects.requireNonNull(getClass().getResourceAsStream("map/map1.png")));
             gc.drawImage(i, 0, 0);
             hills.forEach(hill -> gc.drawImage(hill.getImage(), hill.getSceneX(), hill.getSceneY()));
         } catch (Exception e) {
@@ -54,7 +58,7 @@ public final class GameField {
         }
     }
 
-    public Group getRoot() {
+    public static Group getRoot() {
         return root;
     }
 
@@ -286,6 +290,8 @@ public final class GameField {
         hills.add(new Hill(14, 14));
         hills.add(new Hill(17, 10));
         hills.add(new Hill(18, 10));
+        staticHills = this.hills;
+
     }
 
     private void updateText() {

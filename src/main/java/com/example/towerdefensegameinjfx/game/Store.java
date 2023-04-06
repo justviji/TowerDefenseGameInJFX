@@ -23,17 +23,17 @@ public class Store {
     private MainMenuController mainMenuController;
     private final FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("store.fxml"));;
 
-    private ImageView normalTower;
-    private ImageView machineGunTower;
-    private ImageView sniperTower;
+    private ImageView normalTower = StoreController.normalTowerCover;
+    private ImageView machineGunTower = StoreController.machineGunTowerCover;
+    private ImageView sniperTower = StoreController.sniperTowerCover;
     private boolean isChosen = false;
+    public static Store storeStatic;
 
-    private HashMap<ImageView, Integer> radius; //nutzung einer hash maf fur geschwindigkeit beim vergleichen von keyed items
+    private final HashMap<ImageView, Integer> radius = new HashMap<>(); //nutzung einer hash map fur geschwindigkeit beim vergleichen von keyed items
 
     public Store(AnchorPane mainPane, MainMenuController mainMenuController) {
         this.mainPane = mainPane;
-        this.mainMenuController = mainMenuController;
-        this.radius = new HashMap<>();
+        this.mainMenuController = mainMenuController;;
     }
 
     public AnchorPane getMainPane() {
@@ -53,14 +53,14 @@ public class Store {
         Parent root = fxmlLoader.load();
         store.getChildren().add(root);
 
-        StoreController storeController = fxmlLoader.getController();
-        normalTower = storeController.getNormalTower();
-        machineGunTower = storeController.getMachineGunTower();
-        sniperTower = storeController.getSniperTower();
+        normalTower = StoreController.normalTowerCover;
+        machineGunTower = StoreController.machineGunTowerCover;
+        sniperTower = StoreController.sniperTowerCover;
         // add to hash map
         radius.put(normalTower, Config.NORMAL_TOWER_RANGE);
         radius.put(machineGunTower, Config.MACHINE_GUN_TOWER_RANGE);
         radius.put(sniperTower, Config.SNIPER_TOWER_RANGE);
+        storeStatic = this;
     }
 
     public void disable() {
@@ -72,11 +72,6 @@ public class Store {
 
 
         EventHandler<MouseEvent> mousePressed = event -> {
-            if (event.getSource() == normalTower) {
-                // do something
-            } else if (event.getSource() == machineGunTower) {
-                // do something
-            }
             handleDragDropEvent((ImageView) event.getSource(), root, hills, towers);
         };
 
@@ -86,14 +81,15 @@ public class Store {
 
     }
 
-    private void handleDragDropEvent(ImageView source, Group root, List<Hill> hills, List<Tower> towers) {
+    public void handleDragDropEvent(ImageView source, Group root, List<Hill> hills, List<Tower> towers) {
+        System.out.println("handle drag drop event");
         Circle tempCircle = new Circle(-1000, -1000, radius.get(source));
         tempCircle.setStroke(Color.FORESTGREEN);
-        tempCircle.setFill(Color.rgb(0, 0, 0, 0.07));
+        tempCircle.setFill(Color.rgb(0, 0, 0, 0.05));
         root.getChildren().add(tempCircle);
 
         EventHandler<MouseEvent> mouseDragged = event -> {
-//            ImageView source = ((ImageView) (event.getSource()));
+//          ImageView source = ((ImageView) (event.getSource()));
             source.setTranslateX(event.getSceneX() - 32 - (mainPane.getWidth() - mainMenuController.getStore().getWidth()));
             source.setTranslateY(event.getSceneY() - 32 - source.getLayoutY());
 
@@ -118,11 +114,14 @@ public class Store {
                     }
                 }
             });
+            if (hovering.get()){
+                source.setCursor(Cursor.OPEN_HAND);
+            }
             if (!hovering.get()) {
                 source.setCursor(Cursor.CLOSED_HAND);
             }
         };
-        // will definetly continue the game so well if i add a new tower --->>> fix some things here (else{bugs=true})
+        // will definetly continue the game so well if I add a new tower --->>> fix some things here (else{bugs=true})
         EventHandler<MouseEvent> mouseReleased = event -> {
 //            resetPosition();
             source.setTranslateX(0);
@@ -138,7 +137,7 @@ public class Store {
                         tower = new NormalTower();
                     } else if (machineGunTower.equals(source)) {
                         tower = new MachineGunTower();
-                    } else /*if (sniperTower.equals(source))*/ { //if add new tower again ignore
+                    } else /*if (sniperTower.equals(source))*/ { //if i add new tower again ignore
                         tower = new SniperTower();
                     }
                     tower.setHill(hill);
